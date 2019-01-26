@@ -1,0 +1,52 @@
+package com.biblioteca.factory;
+
+import static org.assertj.core.api.Java6Assertions.assertThatThrownBy;
+import static org.junit.Assert.assertEquals;
+
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
+import org.mockito.junit.MockitoJUnitRunner;
+
+import com.biblioteca.dto.LivroDTO;
+import com.biblioteca.model.Livro;
+
+@RunWith(MockitoJUnitRunner.class)
+public class FactoryTest {
+
+	@InjectMocks
+	private LivroFactory livroFactory;
+	
+	@Test
+	public void test1() {
+		Livro livro = new Livro("Senhor dos Aneis", "Livro do senhor dos aneis", "J. R. R. Tolkien", "Abril");
+		LivroDTO expected = new LivroDTO("Senhor dos Aneis", "Livro do senhor dos aneis", "J. R. R. Tolkien", "Abril");
+		LivroDTO actual = livroFactory.getInstance(livro);
+		assertEquals(expected, actual);
+	}
+	
+//	@Test
+	public void test2() {
+		LivroDTO livro = new LivroDTO("Senhor dos Aneis - A sociedade do anel", "Livro do senhor dos aneis", "J. R. R. Tolkien", "Abril");
+		Livro expected = new Livro("Senhor dos Aneis - A sociedade do anel", "Livro do senhor dos aneis", "J. R. R. Tolkien", "Abril");
+		Livro actual = livroFactory.getInstance(livro);
+		assertEquals(expected, actual);
+	}
+	
+	@Test
+	public void test3() {
+		LivroDTO livroDTO = new LivroDTO("", "Livro do senhor dos aneis", "J. R. R. Tolkien", "Abril");
+		assertThatThrownBy(() -> livroFactory.getInstance(livroDTO))
+	        .isInstanceOf(IllegalArgumentException.class)
+	        .hasMessage("Campo nome não pode ser vazio.");
+	}
+	
+	@Test
+	public void test4() {
+		LivroDTO livroDTO = new LivroDTO(null, "Livro do senhor dos aneis", "J. R. R. Tolkien", "Abril");
+		assertThatThrownBy(() -> livroFactory.getInstance(livroDTO))
+	        .isInstanceOf(IllegalArgumentException.class)
+	        .hasMessage("Campo nome não pode ser nulo.");
+	}
+	
+}
