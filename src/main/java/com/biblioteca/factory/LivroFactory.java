@@ -27,10 +27,10 @@ public class LivroFactory {
 		}
 		
 		Livro livro = new Livro();
-		livro.setNome(livro.getNome());
-		livro.setDescricao(livro.getDescricao());
-		livro.setAuthor(livro.getAuthor());
-		livro.setEditora(livro.getEditora());
+		livro.setNome(livroDTO.getNome());
+		livro.setDescricao(livroDTO.getDescricao());
+		livro.setAuthor(livroDTO.getAuthor());
+		livro.setEditora(livroDTO.getEditora());
 		return livro;
 	}
 

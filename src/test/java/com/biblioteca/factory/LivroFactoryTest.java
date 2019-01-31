@@ -1,7 +1,7 @@
 package com.biblioteca.factory;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Java6Assertions.assertThatThrownBy;
-import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -22,15 +22,15 @@ public class LivroFactoryTest {
 		Livro livro = new Livro("Senhor dos Aneis", "Livro do senhor dos aneis", "J. R. R. Tolkien", "Abril");
 		LivroDTO expected = new LivroDTO("Senhor dos Aneis", "Livro do senhor dos aneis", "J. R. R. Tolkien", "Abril");
 		LivroDTO actual = livroFactory.getInstance(livro);
-		assertEquals(expected, actual);
+		assertThat(actual).isEqualToComparingFieldByFieldRecursively(expected);
 	}
 	
-//	@Test
+	@Test
 	public void test2() {
 		LivroDTO livro = new LivroDTO("Senhor dos Aneis - A sociedade do anel", "Livro do senhor dos aneis", "J. R. R. Tolkien", "Abril");
 		Livro expected = new Livro("Senhor dos Aneis - A sociedade do anel", "Livro do senhor dos aneis", "J. R. R. Tolkien", "Abril");
 		Livro actual = livroFactory.getInstance(livro);
-		assertEquals(expected, actual);
+		assertThat(actual).isEqualToComparingFieldByFieldRecursively(expected);
 	}
 	
 	@Test

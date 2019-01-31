@@ -1,12 +1,10 @@
 package com.biblioteca.api;
 
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.biblioteca.dto.LivroDTO;
@@ -24,7 +22,7 @@ public class LivroAPI {
 	}
 	
 	@PostMapping("/livros")
-	private ResponseEntity<?> insereLivro(@RequestParam @Valid LivroDTO livroDTO) {
+	private ResponseEntity<?> insereLivro(@RequestBody LivroDTO livroDTO) {
 		return ResponseEntity.ok(livroService.buscarTodosLivros());
 	}
 	
