@@ -18,13 +18,13 @@ public class LivroFactory {
 	}
 	
 	public Livro getInstance(LivroDTO livroDTO) {
-//		if (livroDTO.getNome() == null) {
-//			throw new IllegalArgumentException("Campo nome não pode ser nulo.");
-//		}
-//		
-//		if (livroDTO.getNome().isEmpty()) {
-//			throw new IllegalArgumentException("Campo nome não pode ser vazio.");
-//		}
+		if (livroDTO.getNome() == null) {
+			throw new IllegalArgumentException("Campo nome não pode ser nulo.");
+		}
+		
+		if (livroDTO.getNome().isEmpty()) {
+			throw new IllegalArgumentException("Campo nome não pode ser vazio.");
+		}
 		
 		Livro livro = new Livro();
 		livro.setNome(livro.getNome());

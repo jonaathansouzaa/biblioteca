@@ -12,7 +12,7 @@ import com.biblioteca.dto.LivroDTO;
 import com.biblioteca.model.Livro;
 
 @RunWith(MockitoJUnitRunner.class)
-public class FactoryTest {
+public class LivroFactoryTest {
 
 	@InjectMocks
 	private LivroFactory livroFactory;
